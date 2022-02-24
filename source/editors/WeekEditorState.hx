@@ -159,6 +159,7 @@ class WeekEditorState extends MusicBeatState
 	}
 
 	var songsInputText:FlxUIInputText;
+	var displaysongsInputText:FlxUIInputText;
 	var backgroundInputText:FlxUIInputText;
 	var displayNameInputText:FlxUIInputText;
 	var weekNameInputText:FlxUIInputText;
@@ -195,6 +196,10 @@ class WeekEditorState extends MusicBeatState
 		blockPressWhileTypingOn.push(backgroundInputText);
 		
 
+		displaysongsInputText = new FlxUIInputText(10, backgroundInputText.y + 40, 200, '', 8);
+		displaysongsInputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;
+		blockPressWhileTypingOn.push(displaysongsInputText);
+
 		displayNameInputText = new FlxUIInputText(10, backgroundInputText.y + 60, 200, '', 8);
 		displayNameInputText.focusGained = () -> FlxG.stage.window.textInputEnabled = true;		
 		blockPressWhileTypingOn.push(backgroundInputText);
@@ -217,6 +222,7 @@ class WeekEditorState extends MusicBeatState
 		tab_group.add(new FlxText(songsInputText.x, songsInputText.y - 18, 0, 'Songs:'));
 		tab_group.add(new FlxText(opponentInputText.x, opponentInputText.y - 18, 0, 'Characters:'));
 		tab_group.add(new FlxText(backgroundInputText.x, backgroundInputText.y - 18, 0, 'Background Asset:'));
+		tab_group.add(new FlxText(displaysongsInputText.x, displaysongsInputText.y - 18, 0, 'Nomes das Músicas:'));
 		tab_group.add(new FlxText(displayNameInputText.x, displayNameInputText.y - 18, 0, 'Display Name:'));
 		tab_group.add(new FlxText(weekNameInputText.x, weekNameInputText.y - 18, 0, 'Week Name (for Reset Score Menu):'));
 		tab_group.add(new FlxText(weekFileInputText.x, weekFileInputText.y - 18, 0, 'Week File:'));
@@ -226,6 +232,7 @@ class WeekEditorState extends MusicBeatState
 		tab_group.add(boyfriendInputText);
 		tab_group.add(girlfriendInputText);
 		tab_group.add(backgroundInputText);
+		tab_group.add(displaysongsInputText);
 
 		tab_group.add(displayNameInputText);
 		tab_group.add(weekNameInputText);
