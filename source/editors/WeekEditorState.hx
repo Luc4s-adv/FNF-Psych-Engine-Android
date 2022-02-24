@@ -393,21 +393,26 @@ class WeekEditorState extends MusicBeatState
 				updateText();
 			} else if(sender == weekNameInputText) {
 				weekFile.weekName = weekNameInputText.text.trim();
-			} else if(sender == songsInputText) {
+			} else if(sender == songsInputText || sender == displaysongsInputText) {
 				var splittedText:Array<String> = songsInputText.text.trim().split(',');
 				for (i in 0...splittedText.length) {
 					splittedText[i] = splittedText[i].trim();
 				}
+				var displayTexto:Array<String> = displaysongsInputText.text.trim().split(',');
+				for (i in 0...displayTexto.length) {
+					displayTexto[i] = displayTexto[i].trim();
+				}
 
-				while(splittedText.length < weekFile.songs.length) {
+				while(displayTexto.length < weekFile.songs.length) {
 					weekFile.songs.pop();
 				}
 
 				for (i in 0...splittedText.length) {
 					if(i >= weekFile.songs.length) { //Add new song
-						weekFile.songs.push([splittedText[i], 'dad', [146, 113, 253]]);
+						weekFile.songs.push([splittedText[i], 'dad', [146, 113, 253], displayTexto[i]]);
 					} else { //Edit song
 						weekFile.songs[i][0] = splittedText[i];
+						weekFile.songs[i][3] = displayTexto[i];
 						if(weekFile.songs[i][1] == null || weekFile.songs[i][1]) {
 							weekFile.songs[i][1] = 'dad';
 							weekFile.songs[i][2] = [146, 113, 253];
