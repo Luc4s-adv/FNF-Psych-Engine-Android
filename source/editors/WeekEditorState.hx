@@ -276,10 +276,13 @@ class WeekEditorState extends MusicBeatState
 	//Used on onCreate and when you load a week
 	function reloadAllShit() {
 		var weekString:String = weekFile.songs[0][0];
+		var displayweekString:String = weekFile.songs[0][3];
 		for (i in 1...weekFile.songs.length) {
 			weekString += ', ' + weekFile.songs[i][0];
+			displayweekString += ', ' + weekFile.songs[i][0];
 		}
 		songsInputText.text = weekString;
+		displaysongsInputText.text = displayweekString;
 		backgroundInputText.text = weekFile.weekBackground;
 		displayNameInputText.text = weekFile.storyName;
 		weekNameInputText.text = weekFile.weekName;
